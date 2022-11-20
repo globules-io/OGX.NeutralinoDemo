@@ -1,0 +1,137 @@
+{
+    "routing": {
+        "routes": {
+            "main/editor": {
+                "default:Views.Editor": {
+                    "id": "editor",
+                    "template": "Editor",
+                    "node:OML": {
+                        "default .content:FlexCells": {
+                            "axis": "x",
+                            "min": 10,
+                            "template": null,
+                            "children": [
+                                "30%",
+                                "70%"
+                            ],
+                            "node:OML": [
+                                {
+                                    "default:Tree": {
+                                        "id": "tree"
+                                    }
+                                },
+                                {
+                                    "default:Views.TextEditor": {
+                                        "id": "text_editor",
+                                        "template": "TextEditor"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "scope": [
+                    "public"
+                ]
+            }
+        },
+        "options": {
+            "history": true,
+            "bookmark": true,
+            "cache": false,
+            "jail": false,
+            "eval": false
+        },
+        "cache": [],
+        "errors": {}
+    },
+    "vapps": {
+        "main:Stages.Main": {
+            "template": "Main",
+            "use": true,
+            "home": "editor",
+            "placeholder": "#main",
+            "scope": [
+                "public"
+            ],
+            "theater": false
+        }
+    },
+    "preload": {
+        "/img": [],
+        "/snd": [],
+        "fonts": [
+            "Roboto-Black.ttf",
+            "Roboto-BlackItalic.ttf",
+            "Roboto-Bold.ttf",
+            "Roboto-BoldItalic.ttf",
+            "Roboto-Italic.ttf",
+            "Roboto-Light.ttf",
+            "Roboto-LightItalic.ttf",
+            "Roboto-Medium.ttf",
+            "Roboto-MediumItalic.ttf",
+            "Roboto-Regular.ttf",
+            "Roboto-Thin.ttf",
+            "Roboto-ThinItalic.ttf"
+        ],
+        "themes/io-globules-ogx/base/fonts": [
+            "Roboto-Black.ttf",
+            "Roboto-BlackItalic.ttf",
+            "Roboto-Bold.ttf",
+            "Roboto-BoldItalic.ttf",
+            "Roboto-Italic.ttf",
+            "Roboto-Light.ttf",
+            "Roboto-LightItalic.ttf",
+            "Roboto-Medium.ttf",
+            "Roboto-MediumItalic.ttf",
+            "Roboto-Regular.ttf",
+            "Roboto-Thin.ttf",
+            "Roboto-ThinItalic.ttf"
+        ],
+        "/themes/io-globules-ogx/light/img": [
+            "down.svg",
+            "left.svg",
+            "remove.svg",
+            "right.svg",
+            "up.svg"
+        ],
+        "/themes/io-globules-ogx/dark/img": [
+            "arrow.svg",
+            "down.svg",
+            "file.svg",
+            "folder_closed.svg",
+            "folder_empty.svg",
+            "folder_open.svg",
+            "left.svg",
+            "loading.svg",
+            "loop.svg",
+            "remove.svg",
+            "right.svg",
+            "send.svg",
+            "trash.svg",
+            "up.svg"
+        ],
+        "/json": [
+            "data.json"
+        ],
+        "/html": [
+            "template.Editor.html",
+            "template.Main.html",
+            "template.TextEditor.html"
+        ]
+    },
+    "popups": {
+        "width": 300,
+        "height": 400,
+        "anim": "fade"
+    },
+    "windows": {
+        "head": "back",
+        "width": "100%"
+    },
+    "views": {},
+    "overlays": {},
+    "rendertime": false,
+    "scope": "public",
+    "jwt": false
+}

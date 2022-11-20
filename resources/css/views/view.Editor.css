@@ -1,0 +1,15 @@
+#editor{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+#editor > .toolbar{
+    display: inline-block;
+    width: 100%;
+}
+#editor > .content{
+    display: inline-block;
+    width: 100%;
+    flex-grow: 1;
+}
