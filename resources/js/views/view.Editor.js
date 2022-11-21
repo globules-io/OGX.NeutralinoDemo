@@ -3,10 +3,11 @@ OGX.Views.Editor = function(__config){
     construct(this, 'Views.Editor');
 	'use strict'; 
     const view = this;
-    let tree, text_editor, data;
+    let list, tree, text_editor, data;
 
     //@Override
     this.construct = function(__data, __route_data){
+        list = app.cfind('DynamicList', 'list');
         tree = app.cfind('Tree', 'tree');
         text_editor = app.cfind('Views.TextEditor', 'text_editor');
         data = app.getJSON('data');
@@ -21,10 +22,14 @@ OGX.Views.Editor = function(__config){
     //@Override    
 	this.ux = function(__bool){
         if(__bool){
+            list.on(OGX.DynamicList.SELECT, function(__e, __item){
+
+            });
             tree.on(OGX.Tree.SELECT, function(__e, __item){
 
             });
         }else{
+            list.off(OGX.DynamicList.SELECT);
             tree.off(OGX.Tree.SELECT);
         }
     }; 
