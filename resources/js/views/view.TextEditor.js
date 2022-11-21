@@ -4,7 +4,19 @@ OGX.Views.TextEditor = function(__config){
 	'use strict'; 
 
     //@Override
-    this.construct = function(__data, __route_data){};
+    this.construct = function(__data, __route_data){
+        tinymce.init({
+            selector:'textarea#tiny',
+            menubar:'',
+            toolbar:'undo redo | bold italic | alignleft aligncenter alignright alignjustify | outdent indent',
+            resize:false,
+            skin:'ogx',
+            content_css:'dark',
+            setup:function(ed) {
+                ed.on('keyup', onTextChange);
+            }
+        }); 
+    };
     
     //@Override
 	this.enable = function(){};
@@ -23,5 +35,9 @@ OGX.Views.TextEditor = function(__config){
     
     //@Override
     this.destroy = function(){};
+
+    function onTextChange(){       
+        const content = tinymce.get('tiny').getContent();       
+    }
 
 };

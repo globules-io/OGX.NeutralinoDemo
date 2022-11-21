@@ -18,7 +18,7 @@ OGX.Views.Editor = function(__config){
     //@Override
 	this.disable = function(){};    
 	
-    //@Override
+    //@Override    
 	this.ux = function(__bool){
         if(__bool){
             tree.on(OGX.Tree.SELECT, function(__e, __item){

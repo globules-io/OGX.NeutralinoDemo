@@ -9,15 +9,33 @@
                         "default .content:FlexCells": {
                             "axis": "x",
                             "min": 10,
-                            "template": null,
                             "children": [
                                 "30%",
                                 "70%"
                             ],
                             "node:OML": [
                                 {
-                                    "default:Tree": {
-                                        "id": "tree"
+                                    "default:FlexCells": {
+                                        "axis": "y",
+                                        "min": 10,
+                                        "children": [
+                                            "30%",
+                                            "70%"
+                                        ],
+                                        "node:OML": [
+                                            {
+                                                "default:DynamicList": {
+                                                    "id": "list",
+                                                    "scroll" : true
+                                                }
+                                            },
+                                            {
+                                                "default:Tree": {
+                                                    "id": "tree",
+                                                    "show_root" : false
+                                                }
+                                            }
+                                        ]
                                     }
                                 },
                                 {
@@ -47,7 +65,7 @@
     },
     "vapps": {
         "main:Stages.Main": {
-            "template": "Main",
+            "template": "Stage",
             "use": true,
             "home": "editor",
             "placeholder": "#main",
@@ -58,22 +76,8 @@
         }
     },
     "preload": {
-        "/img": [],
         "/snd": [],
-        "fonts": [
-            "Roboto-Black.ttf",
-            "Roboto-BlackItalic.ttf",
-            "Roboto-Bold.ttf",
-            "Roboto-BoldItalic.ttf",
-            "Roboto-Italic.ttf",
-            "Roboto-Light.ttf",
-            "Roboto-LightItalic.ttf",
-            "Roboto-Medium.ttf",
-            "Roboto-MediumItalic.ttf",
-            "Roboto-Regular.ttf",
-            "Roboto-Thin.ttf",
-            "Roboto-ThinItalic.ttf"
-        ],
+        "fonts": [],
         "themes/io-globules-ogx/base/fonts": [
             "Roboto-Black.ttf",
             "Roboto-BlackItalic.ttf",
@@ -87,6 +91,10 @@
             "Roboto-Regular.ttf",
             "Roboto-Thin.ttf",
             "Roboto-ThinItalic.ttf"
+        ],
+        "/img": [
+            "add.svg",
+            "trash.svg"
         ],
         "/themes/io-globules-ogx/light/img": [
             "down.svg",
@@ -116,7 +124,7 @@
         ],
         "/html": [
             "template.Editor.html",
-            "template.Main.html",
+            "template.Stage.html",
             "template.TextEditor.html"
         ]
     },
