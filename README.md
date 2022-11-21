@@ -1,2 +1,2 @@
 # OGX.NeutralinoDemo
-Tree structured text editor as Neutralino-with-OGX.JS demo
+Multi books with chapters and text editor as Neutralino-with-OGX.JS demo
