@@ -1,15 +1,13 @@
 #editor{
-    display: flex;
-    flex-direction: column;
+    display: block;
     width: 100%;
     height: 100%;
 }
-#editor > .toolbar{
-    display: inline-block;
-    width: 100%;
-}
 #editor > .content{
-    display: inline-block;
+    display: block;
     width: 100%;
-    flex-grow: 1;
+    height: 100%;
+}
+#editor > .content .ogx_dynamic_list[data-ogx-id="list"]{
+    padding: 10px;
 }

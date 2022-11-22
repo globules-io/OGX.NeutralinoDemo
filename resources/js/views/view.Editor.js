@@ -23,7 +23,19 @@ OGX.Views.Editor = function(__config){
 	this.ux = function(__bool){
         if(__bool){
             list.on(OGX.DynamicList.SELECT, function(__e, __item){
-
+                if(!__item.id){
+                    app.addOverlay();
+                    app.addPopup({
+                        id: 'new_book',
+                        title: 'New Book',
+                        width: '400|50%-',
+                        height: 200,
+                        buttons: [
+                            {label:'OK', callback:closePopup, params:'new_book'}, 
+                            {label:'CANCEL', callback:closePopup, params:'new_book'}
+                        ]
+                    });
+                }
             });
             tree.on(OGX.Tree.SELECT, function(__e, __item){
 
@@ -39,6 +51,11 @@ OGX.Views.Editor = function(__config){
    
     function saveData(__string){
         Neutralino.filesystem.writeFile('./json/data.json', __string);
+    }
+
+    function closePopup(__id){
+        app.removeOverlay(false);
+        app.removePopup(__id, false);
     }
 
 };

@@ -1,0 +1,13 @@
+.book{
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #303030;
+    cursor: pointer;
+}
+.book > .label{
+    display: inline-block;
+    font-family: Roboto-regular;
+    font-size: 16px;
+    color: #EEE;
+    text-transform: capitalize;
+}

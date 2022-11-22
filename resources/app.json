@@ -26,13 +26,20 @@
                                             {
                                                 "default:DynamicList": {
                                                     "id": "list",
-                                                    "scroll" : true
+                                                    "scroll": true,
+                                                    "key" : "id",
+                                                    "mode" : "hit",
+                                                    "display": {
+                                                        "template": "Book",
+                                                        "css": "book"
+                                                    },
+                                                    "list:OSE": "{{json data}}"
                                                 }
                                             },
                                             {
                                                 "default:Tree": {
                                                     "id": "tree",
-                                                    "show_root" : false
+                                                    "show_root": false
                                                 }
                                             }
                                         ]
@@ -94,7 +101,7 @@
         ],
         "/img": [
             "add.svg",
-            "trash.svg"
+            "remove.svg"
         ],
         "/themes/io-globules-ogx/light/img": [
             "down.svg",
@@ -123,6 +130,7 @@
             "data.json"
         ],
         "/html": [
+            "template.Book.html",
             "template.Editor.html",
             "template.Stage.html",
             "template.TextEditor.html"

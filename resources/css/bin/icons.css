@@ -1,0 +1,17 @@
+.icon{
+    display: inline-block;
+    vertical-align: top;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.icon_add{
+    background-image: url('/img/add.svg');
+}
+.icon_remove{
+    background-image:url('/img/remove.svg');
+}
