@@ -1,0 +1,12 @@
+#new_chapter{
+    padding: 20px;
+}
+#new_chapter > .text{
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#new_chapter > input{
+    display: block;
+    width: 100%;
+}

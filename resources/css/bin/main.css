@@ -1,3 +1,30 @@
 .hidden{
     display: none !important;
 }
+.off{
+    opacity: 0.3;
+}
+.toolbar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+}
+.toolbar > *{
+    display: inline-block;
+}
+.toolbar > .title{
+    flex-grow: 1;
+}
+.toolbar > .icons > .icon{
+    margin-left: 10px;
+}
+.tox-statusbar{
+    display: none !important;
+}
+.popup_message{
+    display: inline-block;
+    padding: 20px;
+    text-align: center;
+}
