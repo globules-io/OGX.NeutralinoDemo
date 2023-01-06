@@ -1,13 +1,19 @@
 .book{
-    padding: 10px;
-    border-radius: 6px;
-    background-color: #303030;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;   
     cursor: pointer;
+    margin-bottom: 5px;
+}
+.book > .icon{
+    display: inline-block;
 }
 .book > .label{
     display: inline-block;
+    flex-grow: 1;
     font-family: Roboto-regular;
     font-size: 16px;
     color: #EEE;
     text-transform: capitalize;
+    padding-top: 3px;
 }

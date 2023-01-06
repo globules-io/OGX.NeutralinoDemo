@@ -8,6 +8,3 @@
     width: 100%;
     height: 100%;
 }
-#editor > .content .ogx_dynamic_list[data-ogx-id="list"]{
-    padding: 10px;
-}

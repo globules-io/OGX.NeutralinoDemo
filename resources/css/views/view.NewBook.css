@@ -1,0 +1,12 @@
+#new_book{
+    padding: 20px;
+}
+#new_book > .text{
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#new_book > input{
+    display: block;
+    width: 100%;
+}

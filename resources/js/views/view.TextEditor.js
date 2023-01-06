@@ -2,9 +2,10 @@ require('Views.TextEditor', 'View');
 OGX.Views.TextEditor = function(__config){
     construct(this, 'Views.TextEditor');
 	'use strict'; 
+    const that = this;
 
     //@Override
-    this.construct = function(__data, __route_data){
+    this.construct = function(__data){
         tinymce.init({
             selector:'textarea#tiny',
             menubar:'',
@@ -12,17 +13,21 @@ OGX.Views.TextEditor = function(__config){
             resize:false,
             skin:'ogx',
             content_css:'dark',
-            setup:function(ed) {
-                ed.on('keyup', onTextChange);
+            setup: function(__ed) {
+                __ed.on('keyup', onTextChange);
             }
-        }); 
+        });        
     };
     
     //@Override
-	this.enable = function(){};
+	this.enable = function(){
+        tinymce.activeEditor.mode.set('design');
+    };
 	
     //@Override
-	this.disable = function(){};    
+	this.disable = function(){
+        tinymce.activeEditor.mode.set('readonly');
+    };    
 	
     //@Override
 	this.ux = function(__bool){
@@ -36,8 +41,13 @@ OGX.Views.TextEditor = function(__config){
     //@Override
     this.destroy = function(){};
 
-    function onTextChange(){       
-        const content = tinymce.get('tiny').getContent();       
+    this.val = function(__string){
+        tinymce.activeEditor.setContent(__string);
+    };
+
+    function onTextChange(){  
+        const content = tinymce.get('tiny').getContent();      
+        that.el.trigger('CHANGE', content);
     }
 
 };

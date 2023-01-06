@@ -24,22 +24,34 @@
                                         ],
                                         "node:OML": [
                                             {
-                                                "default:DynamicList": {
-                                                    "id": "list",
-                                                    "scroll": true,
-                                                    "key" : "id",
-                                                    "mode" : "hit",
-                                                    "display": {
-                                                        "template": "Book",
-                                                        "css": "book"
-                                                    },
-                                                    "list:OSE": "{{json data}}"
+                                                "default:Templates.Books": {
+                                                    "css": "books",
+                                                    "node:OML": {
+                                                        "#books .list:DynamicList": {
+                                                            "id": "list",
+                                                            "scroll": true,
+                                                            "key": "_id",
+                                                            "mode": "single",
+                                                            "display": {
+                                                                "template": "Book",
+                                                                "css": "book"
+                                                            },
+                                                            "list:OSE": "{{json books}}"
+                                                        }
+                                                    }
                                                 }
                                             },
                                             {
-                                                "default:Tree": {
-                                                    "id": "tree",
-                                                    "show_root": false
+                                                "default:Templates.Tree": {
+                                                    "css": "tree",
+                                                    "node:OML": {
+                                                        "#tree .tree:Tree": {
+                                                            "id": "tree",
+                                                            "key": "_id",
+                                                            "show_root": true,
+                                                            "toggle": false
+                                                        }
+                                                    }
                                                 }
                                             }
                                         ]
@@ -101,6 +113,8 @@
         ],
         "/img": [
             "add.svg",
+            "book.svg",
+            "chapter.svg",
             "remove.svg"
         ],
         "/themes/io-globules-ogx/light/img": [
@@ -127,13 +141,17 @@
             "up.svg"
         ],
         "/json": [
-            "data.json"
+            "books.json"
         ],
         "/html": [
             "template.Book.html",
+            "template.Books.html",
             "template.Editor.html",
+            "template.NewBook.html",
+            "template.NewChapter.html",
             "template.Stage.html",
-            "template.TextEditor.html"
+            "template.TextEditor.html",
+            "template.Tree.html"
         ]
     },
     "popups": {

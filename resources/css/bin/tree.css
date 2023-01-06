@@ -1,0 +1,27 @@
+.tree{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#tree{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+#tree > .tree{
+    display: inline-block;
+    flex-grow: 1;
+    width: 100%;
+}
+#tree .ogx_tree_selected_item {
+    background-color: #282828;
+    box-shadow: 0 3px 0 0 #eee;
+}
+#tree .ogx_tree_item[data-type="root"] .ogx_tree_item_icon {
+    background-image: url('/img/root.svg');
+}
+#tree .ogx_tree_item[data-type="folder"] .ogx_tree_item_icon {
+    background-image: url('/img/chapter.svg');
+}

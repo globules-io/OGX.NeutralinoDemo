@@ -1,0 +1,20 @@
+.books{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#books{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+#books > .list{
+    display: inline-block;
+    flex-grow: 1;
+    width: 100%;
+}
+#books > .list .ogx_dynamic_list_selected_item{
+    box-shadow: 0 3px 0 0 #eee;
+}
