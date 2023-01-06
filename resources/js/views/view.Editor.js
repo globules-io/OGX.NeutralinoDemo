@@ -56,7 +56,11 @@ OGX.Views.Editor = function(__config){
 
     /* BOOKS */
     function saveBookList(){
-        Neutralino.filesystem.writeFile('./json/books.json', JSON.stringify(books));
+        Neutralino.filesystem.writeFile('./json/books.json', JSON.stringify(list.val())).then(function(){
+            console.log('WRITE SUCCESS');
+        }, function(__err){
+            console.log('WRITE ERROR', __err);
+        });        
     }
 
     function saveBook(){
@@ -94,7 +98,11 @@ OGX.Views.Editor = function(__config){
         let book = OGX.Data.clone(book_default);    
         book._id = id;
         book.label = name;
-        Neutralino.filesystem.writeFile('./json/'+id+'.json', JSON.stringify(book));        
+        Neutralino.filesystem.writeFile('./json/'+id+'.json', JSON.stringify(book)).then(function(){
+            console.log('WRITE SUCCESS');
+        }, function(__err){
+            console.log('WRITE ERROR', __err);
+        });                
         list.insert(book);
         saveBookList();
     }
