@@ -13,6 +13,7 @@ OGX.Views.TextEditor = function(__config){
             resize:false,
             skin:'ogx',
             content_css:'dark',
+            plugins: 'autoresize',
             setup: function(__ed) {
                 __ed.on('keyup', onTextChange);
             }
@@ -40,7 +41,7 @@ OGX.Views.TextEditor = function(__config){
     
     //@Override
     this.destroy = function(){};
-
+    
     this.val = function(__string){
         tinymce.activeEditor.setContent(__string);
     };
