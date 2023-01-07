@@ -49,7 +49,8 @@
                                                             "id": "tree",
                                                             "key": "_id",
                                                             "show_root": true,
-                                                            "toggle": false
+                                                            "toggle": false,
+                                                            "scroll": true
                                                         }
                                                     }
                                                 }
