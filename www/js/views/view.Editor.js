@@ -30,7 +30,7 @@ OGX.Views.Editor = function(__config){
         if(__bool){
             list.on(OGX.DynamicList.SELECT, selectBook);
             this.on(this.touch.down, '.books .icon_add', createBook)
-            this.on(this.touch.down, '.book .icon_remove', removeBook);
+            this.on(this.touch.down, '.books .icon_remove', removeBook);
             this.on(this.touch.down, '#tree .icon_add', createChapter)
             this.on(this.touch.down, '#tree .icon_remove', removeChapter);
             tree.on(OGX.Tree.SELECT, selectChapter);
@@ -38,7 +38,7 @@ OGX.Views.Editor = function(__config){
         }else{
             list.off(OGX.DynamicList.SELECT, selectBook);
             this.off(this.touch.down, '.books .icon_add', createBook)
-            this.off(this.touch.down, '.book .icon_remove', removeBook);
+            this.off(this.touch.down, '.books .icon_remove', removeBook);
             this.off(this.touch.down, '#tree .icon_add', createChapter)
             this.off(this.touch.down, '#tree .icon_remove', removeChapter);
             tree.off(OGX.Tree.SELECT);
@@ -115,7 +115,7 @@ OGX.Views.Editor = function(__config){
                 title: 'Delete Book?',
                 width: '400|50%-',
                 height: 200,
-                html: '<span class="popup_message">Please confirm you want to delete '+book.name+'. This action cannot be undone.</span>',
+                html: '<span class="popup_message">Please confirm you want to delete '+book.label+'. This action cannot be undone.</span>',
                 buttons: [
                     {label:'YES', callback:trashBook}, 
                     {label:'CANCEL', callback:closePopup, params:'pop_confirm'}
@@ -144,14 +144,14 @@ OGX.Views.Editor = function(__config){
         }
     }    
 
-    function trashBook(){  
-        book = null;
-        book_tree = null;
-        chapter = null;             
-        Neutralino.filesystem.deleteFile('./json/'+__book._id+'.json');
-        list.findDelete('id', __book._id, 1);
+    function trashBook(){           
+        Neutralino.filesystem.removeFile('./json/'+book._id+'.json');
+        list.findDelete('_id', book._id, 1);
         tree.newTree();
         saveBookList();
+        book = null;
+        book_tree = null;
+        chapter = null;           
         closePopup('pop_confirm');
         $('#books .icon_remove').addClass('off');
         $('#tree').addClass('off');
