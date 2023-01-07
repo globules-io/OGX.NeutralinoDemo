@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "defaultMode": "window",
   "port": 0,
-  "documentRoot": "/resources/",
+  "documentRoot": "/www/",
   "url": "/",
   "enableServer": true,
   "enableNativeAPI": true,
@@ -15,7 +15,8 @@
   "nativeAllowList": [
     "app.*",
     "os.*",
-    "debug.log"
+    "debug.log",
+    "filesystem.*"
   ],
   "globalVariables": {
     "TEST1": "Hello",
@@ -38,7 +39,7 @@
       "minHeight": 200,
       "fullScreen": false,
       "alwaysOnTop": false,
-      "icon": "/resources/icons/appIcon.png",
+      "icon": "/www/icons/appIcon.png",
       "enableInspector": true,
       "borderless": false,
       "maximize": false,
@@ -55,7 +56,7 @@
       ]
     },
     "cloud": {
-      "url": "/resources/#cloud",
+      "url": "/www/#cloud",
       "nativeAllowList": [
         "app.*"
       ]
@@ -72,10 +73,10 @@
   },
   "cli": {
     "binaryName": "GLOBULES_NEUTRA",
-    "resourcesPath": "/resources/",
+    "resourcesPath": "/www/",
     "extensionsPath": "/extensions/",
-    "clientLibrary": "/resources/js/neutralino.js",
-    "binaryVersion": "4.7.0",
-    "clientVersion": "3.6.0"
+    "clientLibrary": "/www/js/lib/neutralino/neutralino.js",
+    "binaryVersion": "4.9.0",
+    "clientVersion": "3.8.0"
   }
 }
