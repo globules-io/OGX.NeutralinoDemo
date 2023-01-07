@@ -15,7 +15,8 @@
   "nativeAllowList": [
     "app.*",
     "os.*",
-    "debug.log"
+    "debug.log",
+    "filesystem.*"
   ],
   "globalVariables": {
     "TEST1": "Hello",
