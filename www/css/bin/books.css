@@ -14,6 +14,7 @@
     display: inline-block;
     flex-grow: 1;
     width: 100%;
+    position: relative;
 }
 #books > .list .ogx_dynamic_list_selected_item{
     box-shadow: 0 3px 0 0 #eee;
