@@ -35,8 +35,7 @@
                                                             "display": {
                                                                 "template": "Book",
                                                                 "css": "book"
-                                                            },
-                                                            "list:OSE": "{{json books}}"
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -140,9 +139,6 @@
             "send.svg",
             "trash.svg",
             "up.svg"
-        ],
-        "/json": [
-            "books.json"
         ],
         "/html": [
             "template.Book.html",

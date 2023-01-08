@@ -12,6 +12,7 @@ OGX.Views.Editor = function(__config){
 
     //@Override
     this.construct = function(__data){
+        initData();
         list = app.cfind('DynamicList', 'list');
         tree = app.cfind('Tree', 'tree');
         text_editor = app.cfind('View', 'text_editor');
@@ -56,7 +57,7 @@ OGX.Views.Editor = function(__config){
 
     /* BOOKS */
     function saveBookList(){
-        Neutralino.filesystem.writeFile('www/json/books.json', JSON.stringify(list.val())).then(function(){
+        Neutralino.filesystem.writeFile('./books.json', JSON.stringify(list.val())).then(function(){
             console.log('WRITE SUCCESS');
         }, function(__err){
             console.log('WRITE ERROR', __err);
@@ -67,7 +68,7 @@ OGX.Views.Editor = function(__config){
         const _id = book._id;
         book = tree.getTree();
         book._id = _id; 
-        Neutralino.filesystem.writeFile('www/json/'+book._id+'.json', JSON.stringify(book));
+        Neutralino.filesystem.writeFile('./'+book._id+'.json', JSON.stringify(book));
     }
 
     function createBook(){
@@ -98,11 +99,7 @@ OGX.Views.Editor = function(__config){
         let book = OGX.Data.clone(book_default);    
         book._id = id;
         book.label = name;
-        Neutralino.filesystem.writeFile('www/json/'+id+'.json', JSON.stringify(book)).then(function(){
-            console.log('WRITE SUCCESS');
-        }, function(__err){
-            console.log('WRITE ERROR', __err);
-        });                
+        Neutralino.filesystem.writeFile('./'+id+'.json', JSON.stringify(book));                
         list.insert(book);
         saveBookList();
     }
@@ -126,15 +123,15 @@ OGX.Views.Editor = function(__config){
 
     function selectBook(__e, __item){
         book = __item;
-        OGX.Net.load('/json/'+__item._id+'.json', (__json) => {
-            book_tree = __json;
+        Neutralino.filesystem.readFile('./'+__item._id+'.json').then((__json) => {
+            book_tree = JSON.parse(__json);
             tree.setTree(book_tree);            
             chapter = tree.selectItem('root');      
             selectChapter(null, {item:chapter});            
             $('#books .icon_remove').removeClass('off');
             $('#tree').removeClass('off');
             $('#tree > .tree').removeClass('hidden');
-        });        
+        }); 
     }
 
     function updateChapter(__e, __string){
@@ -145,7 +142,7 @@ OGX.Views.Editor = function(__config){
     }    
 
     function trashBook(){           
-        Neutralino.filesystem.removeFile('./json/'+book._id+'.json');
+        Neutralino.filesystem.removeFile('./'+book._id+'.json');
         list.findDelete('_id', book._id, 1);
         tree.newTree();
         saveBookList();
@@ -236,5 +233,22 @@ OGX.Views.Editor = function(__config){
         text_editor.disable();      
         $('#tree .icon_remove').addClass('off');     
         $('#text_editor').addClass('off');  
+    }
+
+    /* DATA */
+    function initData(){        
+        Neutralino.filesystem.getStats('./books.json')
+        .then(() => {
+            Neutralino.filesystem.readFile('./books.json')
+            .then(__json => {
+                list.val(JSON.parse(__json));
+            }) 
+            .catch(__error => {console.log(__error);});  
+        }, (__error) => {
+            if(__error.code === 'NE_FS_NOPATHE'){
+                Neutralino.filesystem.writeFile('./books.json', '[]');
+            }
+        })
+        .catch(__error => {console.log(__error);});        
     }
 };
