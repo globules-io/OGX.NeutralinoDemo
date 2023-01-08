@@ -3,6 +3,7 @@ OGX.Views.TextEditor = function(__config){
     construct(this, 'Views.TextEditor');
 	'use strict'; 
     const that = this;
+    let to = null;
 
     //@Override
     this.construct = function(__data){
@@ -47,8 +48,13 @@ OGX.Views.TextEditor = function(__config){
     };
 
     function onTextChange(){  
-        const content = tinymce.get('tiny').getContent();      
-        that.el.trigger('CHANGE', content);
+        if(to){
+            clearTimeout(to);
+        }
+        to = setTimeout(() => {
+            const content = tinymce.get('tiny').getContent();      
+            that.el.trigger('CHANGE', content);
+        }, 200);        
     }
 
 };
