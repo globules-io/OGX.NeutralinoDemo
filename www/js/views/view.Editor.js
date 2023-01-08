@@ -57,11 +57,7 @@ OGX.Views.Editor = function(__config){
 
     /* BOOKS */
     function saveBookList(){
-        Neutralino.filesystem.writeFile('./books.json', JSON.stringify(list.val())).then(function(){
-            console.log('WRITE SUCCESS');
-        }, function(__err){
-            console.log('WRITE ERROR', __err);
-        });        
+        Neutralino.filesystem.writeFile('./books.json', JSON.stringify(list.val()));        
     }
 
     function saveBook(){
@@ -126,7 +122,7 @@ OGX.Views.Editor = function(__config){
         Neutralino.filesystem.readFile('./'+__item._id+'.json').then((__json) => {
             book_tree = JSON.parse(__json);
             tree.setTree(book_tree);            
-            chapter = tree.selectItem('root');      
+            chapter = tree.selectItem(book_tree._id);      
             selectChapter(null, {item:chapter});            
             $('#books .icon_remove').removeClass('off');
             $('#tree').removeClass('off');
@@ -207,6 +203,7 @@ OGX.Views.Editor = function(__config){
         chapter.label = title;
         chapter._id = id;
         tree.addItem(chapter);
+        saveBook();
     }
 
     function removeChapter(){
