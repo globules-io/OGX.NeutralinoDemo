@@ -41,7 +41,7 @@ OGX.Views.Editor = function(__config){
             this.off(this.touch.down, '.books .icon_remove', removeBook);
             this.off(this.touch.down, '#tree .icon_add', createChapter)
             this.off(this.touch.down, '#tree .icon_remove', removeChapter);
-            tree.off(OGX.Tree.SELECT);
+            tree.off(OGX.Tree.SELECT, selectChapter);
             text_editor.off('CHANGE', updateChapter);
         }
     }; 
