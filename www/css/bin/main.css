@@ -28,3 +28,13 @@
     padding: 20px;
     text-align: center;
 }
+.loading{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-image: url('/themes/io-globules-ogx/dark/img/loading.svg');
+    background-color: #222;
+}
+.loading >*{
+    display: none !important;
+}
