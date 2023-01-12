@@ -71,11 +71,11 @@ OGX.Views.TextEditor = function(__config){
             Neutralino.filesystem.readBinaryFile(__data[0]).then((__buffer) => {
                 const blob = new Blob([__buffer], { type: 'image/'+ __data[0].split('.').pop()});
                 var reader = new FileReader();
-                reader.onload = function(evt){
-                    const dataurl = evt.target.result;
+                reader.onload = function(__e){
+                    const dataurl = __e.target.result;
                     const b64 = dataurl.substr(dataurl.indexOf(',')+1);
                     const img = new Image();   
-                    img.onload = function(__event){  
+                    img.onload = function(){  
                         tinymce.activeEditor.insertContent('<img src="data:image/png;base64,'+b64+'" width="'+img.width+'" height="'+img.height+'">');   
                         onTextChange();                            
                     };  
