@@ -1,5 +1,5 @@
 {
-  "applicationId": "js.neutralino.sample",
+  "applicationId": "io.globules.ogx.neutralino.demo",
   "version": "1.0.0",
   "defaultMode": "window",
   "port": 0,
@@ -9,7 +9,7 @@
   "enableNativeAPI": true,
   "tokenSecurity": "one-time",
   "logging": {
-    "enabled": true,
+    "enabled": false,
     "writeToLogFile": true
   },
   "nativeAllowList": [
@@ -32,7 +32,7 @@
   },
   "modes": {
     "window": {
-      "title": "GLOBULES_NEUTRA",
+      "title": "GLOBULES.IO NEUTRALINO.JS DEMO",
       "width": 800,
       "height": 500,
       "minWidth": 400,
@@ -40,7 +40,7 @@
       "fullScreen": false,
       "alwaysOnTop": false,
       "icon": "/www/img/ogx.png",
-      "enableInspector": true,
+      "enableInspector": false,
       "borderless": false,
       "maximize": false,
       "hidden": false,
@@ -76,7 +76,7 @@
     "resourcesPath": "/www/",
     "extensionsPath": "/extensions/",
     "clientLibrary": "/www/js/lib/neutralino/neutralino.js",
-    "binaryVersion": "4.9.0",
-    "clientVersion": "3.8.0"
+    "binaryVersion": "4.10.0",
+    "clientVersion": "3.8.2"
   }
 }
