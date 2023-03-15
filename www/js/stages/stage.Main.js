@@ -5,13 +5,7 @@ OGX.Stages.Main = function(__obj){
 
     //@Override
 	this.construct = function(){};
-	
-    //@Override
-	this.enable = function(){};
-	
-    //@Override
-	this.disable = function(){};
-	
+    	
     //@Override
 	this.ux = function(__bool){
         if(__bool){

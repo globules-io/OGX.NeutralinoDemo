@@ -26,12 +26,12 @@ OGX.Views.TextEditor = function(__config){
     };
     
     //@Override
-	this.enable = function(){
+	this.onFocus = function(){
         tinymce.activeEditor.mode.set('design');
     };
 	
     //@Override
-	this.disable = function(){
+	this.onBlur = function(){
         tinymce.activeEditor.mode.set('readonly');
     };    
 	

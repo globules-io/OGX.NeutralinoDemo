@@ -17,13 +17,8 @@ OGX.Views.NewBook = function(__config){
             wait:0,
             change_cb:onNameChange
         });  
-    };
-    
-    //@Override
-	this.enable = function(){};
-	
-    //@Override
-	this.disable = function(){};    
+    };    
+
 	
     //@Override
 	this.ux = function(__bool){

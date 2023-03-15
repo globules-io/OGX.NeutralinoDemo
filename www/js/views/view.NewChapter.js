@@ -18,13 +18,7 @@ OGX.Views.NewChapter = function(__config){
             change_cb:onTitleChange
         });  
     };
-    
-    //@Override
-	this.enable = function(){};
-	
-    //@Override
-	this.disable = function(){};    
-	
+  	
     //@Override
 	this.ux = function(__bool){
         if(__bool){

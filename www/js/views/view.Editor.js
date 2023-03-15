@@ -19,13 +19,7 @@ OGX.Views.Editor = function(__config){
         text_editor.disable();
         data = new OGX.List(app.getJSON('data'));
         setTimeout(() => {$('body').removeClass(('loading'))}, 1000);
-    };
-    
-    //@Override
-	this.enable = function(){};
-	
-    //@Override
-	this.disable = function(){};    
+    }; 
 	
     //@Override    
 	this.ux = function(__bool){

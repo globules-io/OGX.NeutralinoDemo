@@ -2,74 +2,74 @@
     "routing": {
         "routes": {
             "main/editor": {
-                "default:Views.Editor": {
-                    "id": "editor",
-                    "template": "Editor",
-                    "node:OML": {
-                        "default .content:FlexCells": {
-                            "axis": "x",
-                            "min": 10,
-                            "children": [
-                                "30%",
-                                "70%"
-                            ],
-                            "node:OML": [
-                                {
-                                    "default:FlexCells": {
-                                        "axis": "y",
-                                        "min": 10,
-                                        "children": [
-                                            "30%",
-                                            "70%"
-                                        ],
-                                        "node:OML": [
-                                            {
-                                                "default:Templates.Books": {
-                                                    "css": "books",
-                                                    "node:OML": {
-                                                        "#books .list:DynamicList": {
-                                                            "id": "list",
-                                                            "scroll": true,
-                                                            "key": "_id",
-                                                            "mode": "single",
-                                                            "display": {
-                                                                "template": "Book",
-                                                                "css": "book"
+                "scope": "public",
+                "oml":{
+                    "default:Views.Editor": {
+                        "id": "editor",
+                        "template": "Editor",
+                        "node:OML": {
+                            "default .content:FlexCells": {
+                                "axis": "x",
+                                "min": 10,
+                                "children": [
+                                    "30%",
+                                    "70%"
+                                ],
+                                "node:OML": [
+                                    {
+                                        "default:FlexCells": {
+                                            "axis": "y",
+                                            "min": 10,
+                                            "children": [
+                                                "30%",
+                                                "70%"
+                                            ],
+                                            "node:OML": [
+                                                {
+                                                    "default:Templates.Books": {
+                                                        "css": "books",
+                                                        "node:OML": {
+                                                            "#books .list:DynamicList": {
+                                                                "id": "list",
+                                                                "scroll": true,
+                                                                "key": "_id",
+                                                                "mode": "single",
+                                                                "display": {
+                                                                    "template": "Book",
+                                                                    "css": "book"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "default:Templates.Tree": {
+                                                        "css": "tree",
+                                                        "node:OML": {
+                                                            "#tree .tree:Tree": {
+                                                                "id": "tree",
+                                                                "key": "_id",
+                                                                "show_root": true,
+                                                                "toggle": false,
+                                                                "scroll": true
                                                             }
                                                         }
                                                     }
                                                 }
-                                            },
-                                            {
-                                                "default:Templates.Tree": {
-                                                    "css": "tree",
-                                                    "node:OML": {
-                                                        "#tree .tree:Tree": {
-                                                            "id": "tree",
-                                                            "key": "_id",
-                                                            "show_root": true,
-                                                            "toggle": false,
-                                                            "scroll": true
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        ]
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "default:Views.TextEditor": {
+                                            "id": "text_editor",
+                                            "template": "TextEditor"
+                                        }
                                     }
-                                },
-                                {
-                                    "default:Views.TextEditor": {
-                                        "id": "text_editor",
-                                        "template": "TextEditor"
-                                    }
-                                }
-                            ]
+                                ]
+                            }
                         }
                     }
-                },
-                "scope": [
-                    "public"
-                ]
+                }
             }
         },
         "options": {
@@ -77,7 +77,8 @@
             "bookmark": true,
             "cache": false,
             "jail": false,
-            "eval": false
+            "eval": false,
+            "idle": false
         },
         "cache": [],
         "errors": {}
