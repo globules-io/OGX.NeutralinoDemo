@@ -68,6 +68,9 @@ OGX.Views.Editor = function(__config){
         if(!b.hasOwnProperty('unix') || moment().unix() - b.unix > backup_interval){
             b.unix = moment().unix();
             saveBookList();
+            book = tree.getTree();
+            book._id = b._id; 
+            Neutralino.filesystem.writeFile('./backup/'+book._id+'_'+b.unix+'.json', JSON.stringify(book));     
         }       
     }
 
