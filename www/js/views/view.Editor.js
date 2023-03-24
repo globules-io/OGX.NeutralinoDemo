@@ -5,7 +5,9 @@ OGX.Views.Editor = function(__config){
     const view = this;
     const book_default = {_id:'root', type:'root', label:'', items:[]};
     const chapter_default =  {type:'folder', label:'', items:[]};
-    let list, tree, text_editor, data;
+    const backup_interval = 24*60*60;
+    let list, tree, text_editor;
+    let books = null;
     let book = null;
     let book_tree = null;
     let chapter = null;
@@ -17,7 +19,6 @@ OGX.Views.Editor = function(__config){
         tree = app.cfind('Tree', 'tree');
         text_editor = app.cfind('View', 'text_editor');
         text_editor.disable();
-        data = new OGX.List(app.getJSON('data'));
         setTimeout(() => {$('body').removeClass(('loading'))}, 1000);
     }; 
 	
@@ -55,11 +56,19 @@ OGX.Views.Editor = function(__config){
         Neutralino.filesystem.writeFile('./books.json', JSON.stringify(list.val()));        
     }
 
-    function saveBook(){
+    function saveBook(){        
         const _id = book._id;
         book = tree.getTree();
         book._id = _id; 
-        Neutralino.filesystem.writeFile('./'+book._id+'.json', JSON.stringify(book));
+        Neutralino.filesystem.writeFile('./'+book._id+'.json', JSON.stringify(book));       
+    }
+
+    function backupBook(){
+        const b = list.val().get({_id:{eq:book._id}}, null, 1);
+        if(!b.hasOwnProperty('unix') || moment().unix() - b.unix > backup_interval){
+            b.unix = moment().unix();
+            saveBookList();
+        }       
     }
 
     function createBook(){
@@ -73,7 +82,7 @@ OGX.Views.Editor = function(__config){
                 'default:Views.NewBook':{
                     id: 'new_book',
                     template: 'NewBook',
-                    data: data
+                    data: list.val()
                 }
             }],
             buttons: [
@@ -90,6 +99,7 @@ OGX.Views.Editor = function(__config){
         let book = OGX.Data.clone(book_default);    
         book._id = id;
         book.label = name;
+        book.unix = moment().unix();
         Neutralino.filesystem.writeFile('./'+id+'.json', JSON.stringify(book));                
         list.insert(book);
         saveBookList();
@@ -113,12 +123,13 @@ OGX.Views.Editor = function(__config){
     }
 
     function selectBook(__e, __item){
-        book = __item;
+        book = __item;        
         Neutralino.filesystem.readFile('./'+__item._id+'.json').then((__json) => {
             book_tree = JSON.parse(__json);
             tree.setTree(book_tree);            
             chapter = tree.selectItem(book_tree._id);      
-            selectChapter(null, {item:chapter});            
+            selectChapter(null, {item:chapter});      
+            backupBook();
             $('#books .icon_remove').removeClass('off');
             $('#tree').removeClass('off');
             $('#tree > .tree').removeClass('hidden');
@@ -128,6 +139,7 @@ OGX.Views.Editor = function(__config){
     function updateChapter(__e, __string){
         if(book && chapter && chapter.type !== 'root'){
             tree.updateItem(chapter.item._id, {data:__string}, true);      
+            backupBook();
             setTimeout(saveBook, 200);    
         }
     }    
@@ -198,6 +210,7 @@ OGX.Views.Editor = function(__config){
         chapter.label = title;
         chapter._id = id;
         tree.addItem(chapter);
+        backupBook();
         saveBook();
     }
 
@@ -228,12 +241,24 @@ OGX.Views.Editor = function(__config){
     }
 
     /* DATA */
-    function initData(){        
+    function initData(){   
+        //backup folder   
+        Neutralino.filesystem.getStats('./backup')
+        .then(() => {            
+        }, (__error) => {
+            if(__error.code === 'NE_FS_NOPATHE'){
+                Neutralino.filesystem.createDirectory('./backup');
+            }
+        })
+        .catch(__error => {console.log(__error);});     
+
+        //backup book list   
         Neutralino.filesystem.getStats('./books.json')
         .then(() => {
             Neutralino.filesystem.readFile('./books.json')
             .then(__json => {
-                list.val(JSON.parse(__json));
+                books = new OGX.List(JSON.parse(__json));
+                list.val(books);
             }) 
             .catch(__error => {console.log(__error);});  
         }, (__error) => {
