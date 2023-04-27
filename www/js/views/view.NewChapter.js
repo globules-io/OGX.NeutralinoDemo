@@ -7,7 +7,7 @@ OGX.Views.NewChapter = function(__config){
     let val = null;
 
     //@Override
-    this.construct = function(__data){
+    this.construct = (__data) => {
         popup = app.findPopup(this);
         text = $('#new_chapter > .text');
         OGX.Form.bindField({
@@ -17,23 +17,14 @@ OGX.Views.NewChapter = function(__config){
             wait:0,
             change_cb:onTitleChange
         });  
-    };
-  	
+    };  	
+  
     //@Override
-	this.ux = function(__bool){
-        if(__bool){
-          
-        }else{
-            
-        }
-    }; 
-    
-    //@Override
-    this.destroy = function(){
+    this.destroy = () => {
         OGX.Form.unbindField('#new_chapter input');
     };
 
-    this.val = function(){
+    this.val = () => {
         return val;
     };
 

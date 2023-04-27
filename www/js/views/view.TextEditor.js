@@ -6,7 +6,7 @@ OGX.Views.TextEditor = function(__config){
     let to = null;
 
     //@Override
-    this.construct = function(__data){
+    this.construct = (__data) => {
         tinymce.init({
             selector:'textarea#tiny',
             menubar:'',
@@ -26,28 +26,16 @@ OGX.Views.TextEditor = function(__config){
     };
     
     //@Override
-	this.onFocus = function(){
+	this.onFocus = () => {
         tinymce.activeEditor.mode.set('design');
     };
 	
     //@Override
-	this.onBlur = function(){
+	this.onBlur = () => {
         tinymce.activeEditor.mode.set('readonly');
-    };    
-	
-    //@Override
-	this.ux = function(__bool){
-        if(__bool){
-         
-        }else{
-            
-        }
-    }; 
+    };   
     
-    //@Override
-    this.destroy = function(){};    
-    
-    this.val = function(__string){
+    this.val = (__string) => {
         tinymce.activeEditor.setContent(__string);
     };
 

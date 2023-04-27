@@ -13,7 +13,7 @@ OGX.Views.Editor = function(__config){
     let chapter = null;
 
     //@Override
-    this.construct = function(__data){
+    this.construct = (__data) => {
         initData();
         list = app.cfind('DynamicList', 'list');
         tree = app.cfind('Tree', 'tree');
@@ -23,7 +23,7 @@ OGX.Views.Editor = function(__config){
     }; 
 	
     //@Override    
-	this.ux = function(__bool){
+	this.ux = (__bool) => {
         if(__bool){
             list.on(OGX.DynamicList.SELECT, selectBook);
             this.on(this.touch.down, '.books .icon_add', createBook)
@@ -42,9 +42,6 @@ OGX.Views.Editor = function(__config){
             text_editor.off('CHANGE', updateChapter);
         }
     }; 
-    
-    //@Override
-    this.destroy = function(){};  
 
     function closePopup(__id){
         app.removeOverlay(false);

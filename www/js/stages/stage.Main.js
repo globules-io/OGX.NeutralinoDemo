@@ -4,10 +4,10 @@ OGX.Stages.Main = function(__obj){
 	'use strict';
 
     //@Override
-	this.construct = function(){};
+	this.construct = () => {};
     	
     //@Override
-	this.ux = function(__bool){
+	this.ux = (__bool) => {
         if(__bool){
             
         }else{
