@@ -9,6 +9,6 @@
   "author": "globules.io",
   "license": "MIT",
   "dependencies": {
-    "@globules-io/ogx.js": "^1.27.1"
+    "@globules-io/ogx.js": "^1.42.0"
   }
 }
