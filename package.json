@@ -1,6 +1,6 @@
 {
   "name": "globules_neutralino_demo",
-  "version": "1.0.0",
+  "version": "1.0.10",
   "description": "The default template for a Neutralinojs app. It's possible to use your favorite frontend framework by using [these steps](https://neutralino.js.org/docs/how-to/use-a-frontend-library).",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,6 @@
   "author": "globules.io",
   "license": "MIT",
   "dependencies": {
-    "@globules-io/ogx.js": "^1.22.2"
+    "@globules-io/ogx.js": "^1.27.1"
   }
 }
